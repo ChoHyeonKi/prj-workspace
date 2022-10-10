@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book Search Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			$("#search").click(function( ){
+				$.ajax({
+					method: "GET",
+					url: "https://dapi.kakao.com/v3/search/book?target=title",
+					data: { query: $("#keyword").val() },
+					headers: { Authorization: "KakaoAK ce89487b4f076f3f20eef7d0c16c843f" }
+				})
+					.done(function( msg ) {
+				   		console.log(msg.documents);
+						$( "div.bTitle" ).append(msg.documents[0].title);
+						$( "p.thumbnail" ).append("<img src='"+msg.documents[0].thumbnail+"'/>");
+						$( "div.contents" ).append(msg.documents[0].contents);
+						$( "div.isbn" ).append(msg.documents[0].isbn);
+						$( "div.authors" ).append(msg.documents[0].authors);
+						$( "div.publisher" ).append(msg.documents[0].publisher);
+						$( "div.dateTime" ).append(msg.documents[0].dateTime);
+						$( "div.price" ).append(msg.documents[0].price);
+						$( "div.sale_price" ).append(msg.documents[0].sale_price);
+					});
+			})
+		})
+		
+	  </script>
+</head>
+<body>
+	<div class="mainPage" style="width: 500px; height: 100px; border-radius: 30px; box-shadow: 0px 4px 4px -2px black; margin:auto; background-color: skyblue">
+		<div class="title" style="color:black;width: 100%; text-align:center;"> 
+			<h1>SEARCH</h1>
+			<h3>반가워요 xxx님!</h3>
+		</div>
+	</div>
+	
+	<div class="searchForm" style="display:block; text-align: center; margin-top: 30px;">
+		<input id="keyword" value="" type="text"></input>
+		
+		<button id="search">검색</button>
+	</div>
+	<div>
+		<form>
+			<p class="thumbnail"></p>
+			<div class="bTitle"><strong>제목:</strong> </div>
+			<div class="contents">소개: </div>
+			<div class="isbn">isbn: </div>
+			<div class="authors">저자: </div>
+			<div class="publisher">출판사: </div>
+			<div class="dateTime">출판일: </div>
+			<div class="price">정가: </div>
+			<div class="sale_price">판매가: </div>
+		</form>
+	</div>
+	
+	<div class="logout" style="text-align: center;">
+		<a href="../">로그아웃</a>
+	</div>
+</body>
+</html>

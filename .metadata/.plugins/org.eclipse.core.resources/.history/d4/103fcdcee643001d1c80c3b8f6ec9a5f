@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Welcome Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		.title {
+			text-align: center;
+			color: gray;
+		}
+		.signUp {
+			text-align: center;
+		}
+		.loginBtn {
+			text-align:center;
+		}
+		.btn {
+			display:inline-block;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="title">Login Page</h1>
+		<form name = "loginForm" method = "post" action = "/members/login">
+			<table class="login" align="center">
+				<tr>
+					<td>ID</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="아이디를 입력하세요."/></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+				</tr>
+				<tr>
+					<td><input type="password" placeholder="비밀번호를 입력하세요."/></td>
+				</tr>
+			</table>
+		</form>
+	
+	<div class="loginBtn">
+		<div class="btn"><button type="submit">로그인</button></div>	
+	</div>
+	
+	<div class='signUp'>
+		회원이 아니신가요?
+		<a href="/members/new">회원가입</a>
+	</div>
+	
+	<div class="memberList" style="text-align: center;">
+		<a href="/members">회원 목록</a>
+	</div>
+</body>
+</html>

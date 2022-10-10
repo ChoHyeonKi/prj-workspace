@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book Search Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 class="title">Book Search</h1>
+	
+	<h3>반가워요 xxx님!</h3>
+	
+	<input id="keyword" value="" type="text"></input>
+	
+	<button id="search">검색</button>
+	
+	<p></p>
+	
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			$("#search").click(function( ){
+				$.ajax({
+					method: "GET",
+					url: "https://dapi.kakao.com/v3/search/book?target=title",
+					data: { query: "미움받을 용기" },
+					headers: { Authorization: "KakaoAK ce89487b4f076f3f20eef7d0c16c843f" }
+				})
+					.done(function( msg ) {
+				   		console.log(msg.documents[0].title);
+				   		console.log(msg.documents[0].thumbnail);
+						$( "p" ).append( "<strong>"+msg.documents[0].title+"</strong>" );
+						$( "p" ).append( "<img src='"+msg.documents[0].thumbnail+"'/>" );
+					});
+					})
+		})
+		
+	  </script>
+	
+	
+	<div class="back">
+		<a href="../">홈으로</a>
+	</div>
+</body>
+</html>

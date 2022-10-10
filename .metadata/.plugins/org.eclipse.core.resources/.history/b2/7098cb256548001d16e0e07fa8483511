@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book Search Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<script>
+		
+		$(document).ready(function() {
+			value = 'title';
+			$('#titlekeyword').on("change",function(){
+				value = $(this).val();			
+			})
+			
+			$("#search").click(function( ){				
+				console.log('data value 값 ' + value);
+				$.ajax({
+					method: "GET",					
+					url: "https://dapi.kakao.com/v3/search/book?sort=accuracy&size=10&page=10&target=" + value,
+					data: { query: $("#keyword").val() },
+					headers: { Authorization: "KakaoAK ce89487b4f076f3f20eef7d0c16c843f" }
+				})
+					.done(function( bookList ) {
+				   		console.log(bookList.documents);
+				   		if(bookList.documents == null){
+							   alert("검색결과가 없습니다.")
+						   }
+				   		var dateTime = bookList.documents[0].datetime;
+				   		dateTime = dateTime.substr(0,10);
+				   		
+				   		var sale_price = bookList.documents[0].sale_price;
+				   		if(bookList.documents[0].status == ""){
+							   sale_price = "미판매";
+						}
+				   		
+					    $( "div.thumbnail" ).append("<img src='"+bookList.documents[0].thumbnail+"'/>");
+						$( "div.bTitle" ).replaceWith("<strong>제목:</strong>" + bookList.documents[0].title);
+						$( "div.contents" ).replaceWith("<strong>소개:</strong>" + bookList.documents[0].contents);
+						$( "div.isbn" ).replaceWith("<strong>ISBN:</strong>" + bookList.documents[0].isbn);
+						$( "div.authors" ).replaceWith("<strong>저자:</strong>" + bookList.documents[0].authors);
+						$( "div.publisher" ).replaceWith("<strong>출판사:</strong>" + bookList.documents[0].publisher);
+						$( "div.dateTime" ).replaceWith("<strong>출판일:</strong>" + dateTime);
+						$( "div.price" ).replaceWith("<strong>정가:</strong>" + bookList.documents[0].price);
+						$( "div.sale_price" ).replaceWith("<strong>판매가:</strong>" + sale_price);
+					});
+			})
+		})
+	  </script>
+</head>
+<body>
+	<div class="mainPage" style="width: 500px; height: auto; border-radius: 30px; box-shadow: 0px 4px 4px -2px black; margin:auto; background-color: skyblue">
+		<div class="title" style="color:black;width: 100%; text-align:center;"> 
+			<h1>SEARCH</h1>
+			<h3>반가워요 xxx님!</h3>
+			<div class="logout" style="text-align: center;">
+				<a href="../">로그아웃</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="searchForm" style="display:block; text-align: center; margin-top: 30px;">
+		<select name="titlekeyword" id="titlekeyword" value="" style= "width: 100px;">
+			<option value="title">제목</option>
+			<option value="isbn">ISBN</option>
+			<option value="publisher">출판사</option>
+			<option value="person">저자</option>	
+		</select>
+		
+		<input id="keyword" value="" type="text"></input>
+		
+		<button id="search">검색</button>
+	</div>
+	
+	
+	<div class="bookList" style="width: 700px; height: auto; margin:auto; margin-top: 30px; background-color:skyblue">
+			<div class="thumbnail" style="float:left; margin-right:10px"></div>
+			<div class="bTitle"></div>
+			<div class="contents"></div>
+			<div class="isbn"></div>
+			<div class="authors"></div>
+			<div class="publisher"></div>
+			<div class="dateTime"></div>
+			<div class="price"></div>
+			<div class="sale_price"></div>
+	</div>
+	
+	<!--
+	<div class="next" style="text-align: center;">
+		<button id="next">다음</button>
+	</div>
+	-->
+</body>
+</html>

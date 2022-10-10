@@ -1,0 +1,9 @@
+package templates.members;
+
+public class Snippet {
+	@GetMapping("/")
+		public String home() {
+			return "home";
+		}
+}
+

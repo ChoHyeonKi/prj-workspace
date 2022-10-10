@@ -1,0 +1,8 @@
+package com.book.repository;
+
+import com.book.domain.Member;
+
+public class MemberRepository {
+	Member save(Member member);
+	Optional<Member> findById(long id);
+}

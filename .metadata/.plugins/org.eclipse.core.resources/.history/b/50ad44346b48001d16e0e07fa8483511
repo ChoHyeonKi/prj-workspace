@@ -1,0 +1,72 @@
+package com.book.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.book.domain.Member;
+import com.book.repository.MemberRepository;
+
+@Transactional
+public class MemberService {
+	
+	private final MemberRepository memberRepository;
+	String username;
+	String password;
+	
+	
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+	
+	//회원가입
+	public boolean join(Member member) {
+		member = memberRepository.save(member);
+		
+		if(member.getUsername().equals("")) {
+			System.out.println("아이디 입력안함");
+			return false;
+		}
+		
+		if(member.getPassword().equals("")) {
+			System.out.println("비밀번호 입력안함");
+			return false;
+		}
+		
+		System.out.println("성공2");
+		return true;
+		
+	}
+		
+	//로그인
+	public boolean login(String username, String password) {
+
+		Member member = memberRepository.findByUsername(username);
+		
+		//회원 아이디 중복확인
+		if(member == null) {
+			return false;
+		}
+		
+		if (!member.getPassword().equals(password)) {
+			return false;
+		}
+		
+		System.out.println("성공");
+		return true;
+	}
+	
+	// 전체 회원 목록
+	public List<Member> findMembers(){
+		return memberRepository.findAll();
+	}
+	
+	//아이디 중복체크
+	public void checkUsernameDuplication(String username) {
+		boolean usernameDuplicate = memberRepository.existsByUsername(username);
+		if(usernameDuplicate) {
+			throw new IllegalStateException("이미 존재하는 아이디입니다.");
+		}
+	}
+	
+}

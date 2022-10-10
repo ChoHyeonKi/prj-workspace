@@ -1,0 +1,9 @@
+package com.book.domain;
+
+@Entity
+public class Member {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+}

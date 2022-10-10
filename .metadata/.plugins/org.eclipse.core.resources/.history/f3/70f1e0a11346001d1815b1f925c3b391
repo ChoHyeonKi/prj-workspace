@@ -1,0 +1,24 @@
+package com.book.controller;
+
+import java.util.Map;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class KakaoApi {
+	private final String url = "https://dapi.kakao.com/v3/search/book";
+	private final String key = "rest api key";
+	
+	@GetMapping("/kakao")
+	public Map callApi(@RequestParam String query) {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.set("Authorization", query)
+		
+		
+	}
+}

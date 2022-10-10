@@ -1,0 +1,5 @@
+package com.book.domain;
+
+public class BookInfo {
+
+}

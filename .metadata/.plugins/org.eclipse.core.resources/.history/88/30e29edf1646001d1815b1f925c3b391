@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book Search Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 class="title">Book Search</h1>
+	
+	<h3>반가워요 xxx님!</h3>
+	
+	<script>
+	  src="https://code.jquery.com/jquery-3.6.1.js"
+	  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	  crossorigin="anonymous">
+	</script>
+  <script>
+	  $.ajax({
+		  method: "GET",
+		  url: "https://dapi.kakao.com/v3/search/book?target=title",
+		  data: { name: "John", location: "Boston" }
+	  })
+		  	.done(function( msg ) {
+		   	 	alert( "Data Saved: " + msg );
+		 	});
+  </script>
+	
+	
+	<div class="back">
+		<a href="../">홈으로</a>
+	</div>
+</body>
+</html>

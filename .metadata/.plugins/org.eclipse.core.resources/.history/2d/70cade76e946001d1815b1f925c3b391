@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Book Search Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div class="mainPage" style="width: 500px; height: 100px; border-radius: 30px; box-shadow: 0px 4px 4px -2px black; margin:auto; background-color: skyblue">
+		<div class="title" style="color:black;width: 100%; text-align:center;"> 
+			<h1>SEARCH</h1>
+			<h3>반가워요 xxx님!</h3>
+		</div>
+	</div>
+	
+	<div class="searchForm" style="display:block; text-align: center; margin-top: 30px;">
+		<input id="keyword" value="" type="text"></input>
+		
+		<button id="search">검색</button>
+		
+			<p class="thumbnail"></p>
+			<div class="bTitle">제목: </div>
+		<p></p>
+	</div>
+	
+	<div class="logout" style="text-align: center;">
+		<a href="../">로그아웃</a>
+	</div>
+</body>
+</html>

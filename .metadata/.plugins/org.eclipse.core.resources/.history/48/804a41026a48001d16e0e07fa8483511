@@ -1,0 +1,22 @@
+package com.book.repository;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import com.book.domain.Member;
+
+public class MemberRepositoryTest {
+	MemberRepository repository;
+	
+	@Test
+	public void save() {
+		Member member = new Member();
+		member.setUsername("abc");
+		
+		repository.save(member);
+		
+		Member result = repository.findByUsername(member.getUsername());
+		
+		Assertions.assertThat(member).isEqualTo(result);
+	}
+}

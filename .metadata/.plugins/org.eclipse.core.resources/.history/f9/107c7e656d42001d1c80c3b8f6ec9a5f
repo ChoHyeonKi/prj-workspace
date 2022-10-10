@@ -1,0 +1,6 @@
+# set h2 properties
+spring.h2.console.enabled=true
+# 임의 명칭 생성 여부 (true-랜덤 생성, false-명칭 고정)
+spring.datasource.generate-unique-name=false
+# /h2-console이 기본값이기 때문에 생략가능
+spring.h2.console.path=/h2-console

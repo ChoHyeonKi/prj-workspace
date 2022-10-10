@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Join Page</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		.title {
+			text-align: center;
+			color: gray;
+		}
+		.back{
+			text-align: center;
+		}
+		.loginBtn {
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="title">Join Page</h1>
+	
+	<table align="center">
+		<tr>
+			<td>ID</td>
+		</tr>
+		<tr>
+			<td><input type="text" id="username" name="username" placeholder="아이디를 입력하세요."/></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+		</tr>
+		<tr>
+			<td><input type="text" id="password" name="password" placeholder="비밀번호를 입력하세요."/></td>
+		</tr>
+	</table>
+	
+	<div class="loginBtn">
+		<div><button type="submit">회원가입</button></div>
+	</div>
+	
+	<div class="back">
+		<a href="../">홈으로</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+package com.book;
+
+@Configuration
+public class SpringConfig {
+
+}

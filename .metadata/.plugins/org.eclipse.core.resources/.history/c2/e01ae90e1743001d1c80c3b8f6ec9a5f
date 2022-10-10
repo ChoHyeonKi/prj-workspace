@@ -1,0 +1,10 @@
+package com.book;
+
+import org.springframework.context.annotation.Configuration;
+
+import com.book.repository.MemberRepository;
+
+@Configuration
+public class SpringConfig {
+	private MemberRepository memberRepository;
+}

@@ -1,0 +1,10 @@
+package com.book.repository;
+
+public class MemberRepositoryTest {
+	MemberRepository memberRepository;
+	
+	@AfterEach
+	public void afterEach() {
+		
+	}
+}

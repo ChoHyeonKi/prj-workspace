@@ -1,0 +1,8 @@
+package com.book.service;
+
+import com.book.repository.MemberRepository;
+
+public class MemberServiceTest {
+	MemberService memberService;
+	MemberRepository memberRepository;
+}

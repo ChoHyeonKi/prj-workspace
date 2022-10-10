@@ -1,0 +1,16 @@
+package com.book.service;
+
+import org.junit.jupiter.api.Test;
+
+import com.book.repository.MemberRepository;
+
+public class MemberServiceTest {
+	
+	MemberService memberService;
+	MemberRepository memberRepository;
+	
+	@Test
+	public void beforeEach() {
+		
+	}
+}

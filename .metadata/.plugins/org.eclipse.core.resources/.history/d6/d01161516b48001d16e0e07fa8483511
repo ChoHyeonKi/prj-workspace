@@ -1,0 +1,62 @@
+package com.book.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.book.domain.Member;
+import com.book.repository.MemberRepository;
+
+@Transactional
+public class MemberService {
+	
+	private final MemberRepository memberRepository;
+	
+	
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+	
+	//회원가입
+	public boolean join(Member member) {
+		member = memberRepository.save(member);
+		
+		if(member.getUsername().equals("")) {
+			System.out.println("아이디 입력안함");
+			return false;
+		}
+		
+		if(member.getPassword().equals("")) {
+			System.out.println("비밀번호 입력안함");
+			return false;
+		}
+		
+		System.out.println("성공2");
+		return true;
+		
+	}
+		
+	//로그인
+	public boolean login(String username, String password) {
+
+		Member member = memberRepository.findByUsername(username);
+		
+		//회원 확인
+		if(member == null) {
+			return false;
+		}
+		
+		//저장된 비밀번호와 일치하는지 확인 
+		if (!member.getPassword().equals(password)) {
+			return false;
+		}
+		
+		//아이디 비밀번호 일치
+		return true;
+	}
+	
+	// 전체 회원 목록
+	public List<Member> findMembers(){
+		return memberRepository.findAll();
+	}
+}

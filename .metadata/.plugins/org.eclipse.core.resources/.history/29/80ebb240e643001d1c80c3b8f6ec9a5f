@@ -1,0 +1,22 @@
+package com.book.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.book.domain.Member;
+
+public interface MemberRepository extends JpaRepository<Member, Long>{
+	//회원가입
+	Member save(Member member);
+	
+	//회원 찾기
+	Member findByUsername(String username);
+	
+	//회원 목록
+	List<Member> findAll();
+	
+	//유효성 검사 - 아이디 중복체크 -> true: 중복, false: 중복아님
+	boolean existsByUsername(String username);
+}

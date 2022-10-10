@@ -1,0 +1,8 @@
+package com.book.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class KakaoApi {
+	private final String url = "https://dapi.kakao.com/v3/search/book";
+}

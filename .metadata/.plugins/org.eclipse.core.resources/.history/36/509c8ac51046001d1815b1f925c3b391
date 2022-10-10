@@ -1,0 +1,6 @@
+package com.book.controller;
+
+@RestController
+public class KakaoApi {
+
+}

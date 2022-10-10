@@ -1,0 +1,12 @@
+package com.book.repository;
+
+import org.junit.jupiter.api.AfterEach;
+
+public class MemberRepositoryTest {
+	MemberRepository memberRepository;
+	
+	@AfterEach
+	public void afterEach() {
+		
+	}
+}

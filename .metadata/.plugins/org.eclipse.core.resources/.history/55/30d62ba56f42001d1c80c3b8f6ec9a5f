@@ -1,0 +1,10 @@
+package com.book.repository;
+
+import java.util.Optional;
+
+import com.book.domain.Member;
+
+public class MemberRepository {
+	Member save(Member member);
+	Optional<Member> findById(Long id);
+}

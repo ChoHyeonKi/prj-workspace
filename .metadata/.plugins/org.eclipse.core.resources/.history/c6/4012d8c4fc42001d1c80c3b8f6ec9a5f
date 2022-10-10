@@ -1,0 +1,31 @@
+package com.book.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import com.book.domain.Member;
+import com.book.repository.MemberRepository;
+
+@Transactional
+public class MemberService {
+	
+	private MemberRepository memberRepository;
+	
+	//회원가입
+	public Long join(Member member) {
+		memberRepository.save(member);
+		return member.getId();
+	}
+	
+	private void checkValidation(Member member) {
+		String username = memberRepository.findByUsername(member.getUsername());
+		
+	}
+	
+	// 전체 회원 목록
+	public List<Member> findMembers(){
+		return memberRepository.findAll();
+	}
+	
+}
